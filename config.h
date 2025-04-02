@@ -1,0 +1,13 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// Define this before including HTTP_Method.h to avoid conflicts
+#define HTTP_DELETE HTTP_METHOD_DELETE
+#define HTTP_GET HTTP_METHOD_GET
+#define HTTP_HEAD HTTP_METHOD_HEAD
+#define HTTP_POST HTTP_METHOD_POST
+#define HTTP_PUT HTTP_METHOD_PUT
+#define HTTP_OPTIONS HTTP_METHOD_OPTIONS
+#define HTTP_PATCH HTTP_METHOD_PATCH
+
+#endif // CONFIG_H
