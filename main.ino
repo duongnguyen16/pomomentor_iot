@@ -2105,7 +2105,6 @@ void loop()
             }
             else if (wifiReconnectAttempts == 5)
             {
-
                 Serial.println("WiFi reconnection failed after 5 attempts");
                 updateLcdRaw("WiFi Failed", "Operating offline");
                 delay(2000);
