@@ -28,6 +28,13 @@ VL53L0X sensor;
 #define S3_PIN 18
 #define S4_PIN 19
 
+#define MAX_TASKS 20
+#define MAX_TASK_NAME_LENGTH 50
+
+#define EEPROM_SIZE 512
+#define SETTINGS_VERSION 1
+#define SETTINGS_ADDR 0
+
 enum UIMode
 {
     CLOCK_MODE,
@@ -80,8 +87,6 @@ String cachedLcdLine1 = "";
 String cachedLcdLine2 = "";
 unsigned long lastDisplayUpdateTime = 0;
 
-#define MAX_TASKS 20
-#define MAX_TASK_NAME_LENGTH 50
 struct Task
 {
     char id[16];
@@ -98,9 +103,6 @@ time_t now;
 unsigned long lastClockUpdateTime = 0;
 const unsigned long CLOCK_UPDATE_INTERVAL = 1000;
 
-#define EEPROM_SIZE 512
-#define SETTINGS_VERSION 1
-#define SETTINGS_ADDR 0
 
 struct Settings
 {
@@ -506,7 +508,6 @@ void updateLcdRaw(const String &line1, const String &line2)
 
 void playTone(const char *toneType)
 {
-#ifdef BUZZER_PIN
     pinMode(BUZZER_PIN, OUTPUT);
 
     digitalWrite(BUZZER_PIN, LOW);
@@ -563,11 +564,6 @@ void playTone(const char *toneType)
     }
 
     digitalWrite(BUZZER_PIN, LOW);
-#else
-
-    Serial.print("TONE: ");
-    Serial.println(toneType);
-#endif
 }
 
 void startPomodoro(PomodoroState type, int durationSeconds)
